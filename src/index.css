@@ -61,8 +61,8 @@
     --gradient-calm: linear-gradient(180deg, hsl(220 25% 8%), hsl(200 30% 10%));
     --gradient-healing: linear-gradient(45deg, hsl(160 80% 15%), hsl(150 70% 12%));
     --gradient-mystical: linear-gradient(270deg, hsl(270 85% 15%), hsl(210 100% 12%), hsl(220 30% 8%));
-    --gradient-glass: linear-gradient(135deg, rgba(255,255,255,0.1), rgba(255,255,255,0.05));
-    --gradient-navbar: linear-gradient(90deg, hsl(220 30% 6%), hsl(220 25% 8%), hsl(220 30% 6%));
+    --gradient-glass: linear-gradient(135deg, rgba(255,255,255,0.08), rgba(255,255,255,0.02));
+    --gradient-navbar: linear-gradient(90deg, rgba(255,255,255,0.05), rgba(255,255,255,0.02));
 
     /* Enhanced Shadows & Effects */
     --shadow-soft: 0 4px 20px hsl(220 30% 0% / 0.3);

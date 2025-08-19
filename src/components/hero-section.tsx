@@ -51,7 +51,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onStartQuest }) => {
               Defeat Stress. Build Resilience.
             </p>
 
-            <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
+            <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed text-white">
               Transform your mental wellness journey into an epic adventure.
               Master breathing techniques, conquer stress monsters, and build
               unshakeable inner peace. 🌸
@@ -81,15 +81,21 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onStartQuest }) => {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-2xl mx-auto">
             <div className="backdrop-blur-sm bg-gradient-to-br from-healing/20 to-healing/10 rounded-2xl p-4 border border-healing/30 shadow-neon">
               <div className="text-2xl font-bold text-healing">1000+</div>
-              <div className="text-sm text-muted-foreground">Lives Transformed</div>
+              <div className="text-sm text-muted-foreground">
+                Lives Transformed
+              </div>
             </div>
             <div className="backdrop-blur-sm bg-gradient-to-br from-primary/20 to-primary/10 rounded-2xl p-4 border border-primary/30 shadow-glow">
               <div className="text-2xl font-bold text-primary">95%</div>
-              <div className="text-sm text-muted-foreground">Stress Reduction</div>
+              <div className="text-sm text-muted-foreground">
+                Stress Reduction
+              </div>
             </div>
             <div className="backdrop-blur-sm bg-gradient-to-br from-secondary/20 to-secondary/10 rounded-2xl p-4 border border-secondary/30 shadow-mystical">
               <div className="text-2xl font-bold text-secondary">24/7</div>
-              <div className="text-sm text-muted-foreground">Support Available</div>
+              <div className="text-sm text-muted-foreground">
+                Support Available
+              </div>
             </div>
           </div>
         </div>

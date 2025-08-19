@@ -19,7 +19,7 @@ export const Navbar: React.FC<NavbarProps> = ({ currentSection, onNavigate }) =>
   ];
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-gradient-navbar backdrop-blur-xl border-b border-primary/20 shadow-glass">
+    <nav className="fixed top-0 left-0 right-0 z-50 bg-gradient-glass backdrop-blur-2xl border-b border-primary/10 shadow-glass">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
@@ -36,16 +36,16 @@ export const Navbar: React.FC<NavbarProps> = ({ currentSection, onNavigate }) =>
           </div>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-1">
+          <div className="hidden md:flex items-center space-x-4">
             {navItems.map((item) => (
               <button
                 key={item.id}
                 onClick={() => onNavigate?.(item.id)}
                 className={`
-                  px-4 py-2 rounded-lg text-sm font-medium transition-all duration-300 flex items-center space-x-2
+                  px-4 py-2 rounded-lg text-sm font-medium transition-all border border-primary/30 text-white  duration-300 flex items-center space-x-2
                   ${currentSection === item.id
-                    ? 'bg-primary/20 text-primary shadow-glow border border-primary/30'
-                    : 'text-muted-foreground hover:text-foreground hover:bg-muted/10'
+                    ? 'bg-primary/40 text-primary shadow-glow border border-primary/10'
+                    : 'bg-primary/20 text-primary shadow-glow border border-primary/70'
                   }
                 `}
               >
@@ -83,7 +83,7 @@ export const Navbar: React.FC<NavbarProps> = ({ currentSection, onNavigate }) =>
 
         {/* Mobile Menu */}
         {isMenuOpen && (
-          <div className="md:hidden py-4 border-t border-primary/20 animate-fade-in-up">
+          <div className="md:hidden py-4 border-t border-primary/20 animate-fade-in-up bg-gradient-glass backdrop-blur-xl">
             <div className="space-y-2">
               {navItems.map((item) => (
                 <button
