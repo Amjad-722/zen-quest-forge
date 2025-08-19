@@ -114,7 +114,12 @@ export const BirdSanctuary: React.FC<BirdSanctuaryProps> = ({ onComplete }) => {
 
   // Game loop
   useEffect(() => {
-    if (phase !== 'playing') return;
+    if (phase !== 'playing') {
+      console.log('Game loop not running, phase:', phase);
+      return;
+    }
+
+    console.log('Starting game loop with', birds.length, 'birds');
 
     const gameInterval = setInterval(() => {
       updateBirds();
@@ -125,7 +130,9 @@ export const BirdSanctuary: React.FC<BirdSanctuaryProps> = ({ onComplete }) => {
     const timerInterval = setInterval(() => {
       setTimeLeft(prev => {
         if (prev <= 1) {
-          setPhase(caughtCount >= TARGET_BIRDS ? 'victory' : 'timeup');
+          const newPhase = caughtCount >= TARGET_BIRDS ? 'victory' : 'timeup';
+          console.log('Game ending, phase:', newPhase, 'caught:', caughtCount);
+          setPhase(newPhase);
           return 0;
         }
         return prev - 1;
@@ -152,10 +159,15 @@ export const BirdSanctuary: React.FC<BirdSanctuaryProps> = ({ onComplete }) => {
   }, [caughtCount, phase, toast, onComplete]);
 
   const handleBirdClick = (birdId: string) => {
+    console.log('Bird clicked:', birdId, 'Current phase:', phase);
     setBirds(prevBirds =>
       prevBirds.map(bird => {
         if (bird.id === birdId && !bird.caught) {
-          setCaughtCount(prev => prev + 1);
+          console.log('Catching bird:', birdId);
+          setCaughtCount(prev => {
+            console.log('Caught count updating from', prev, 'to', prev + 1);
+            return prev + 1;
+          });
           return { ...bird, caught: true };
         }
         return bird;
@@ -164,6 +176,7 @@ export const BirdSanctuary: React.FC<BirdSanctuaryProps> = ({ onComplete }) => {
   };
 
   const startGame = () => {
+    console.log('Starting bird game');
     setPhase('playing');
     setBirds([]);
     setCaughtCount(0);
@@ -173,6 +186,7 @@ export const BirdSanctuary: React.FC<BirdSanctuaryProps> = ({ onComplete }) => {
     const initialBirds = Array.from({ length: 3 }, (_, i) => 
       createBird(`initial-${i}`)
     );
+    console.log('Initial birds created:', initialBirds);
     setBirds(initialBirds);
   };
 
