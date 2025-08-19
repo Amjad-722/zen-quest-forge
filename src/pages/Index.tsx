@@ -4,67 +4,77 @@ import { AdventureMap } from '@/components/adventure-map';
 import { BreathingBattle } from '@/components/breathing-battle';
 import { BirdSanctuary } from '@/components/bird-sanctuary';
 import { MoodCheckin } from '@/components/mood-checkin';
+import { Navbar } from '@/components/navbar';
 import { ZenButton } from '@/components/ui/zen-button';
 import { Card, CardContent } from '@/components/ui/card';
+import { Badge } from '@/components/ui/badge';
 
-type AppState = 'hero' | 'mood-checkin' | 'adventure-map' | 'breathing-battle' | 'bird-sanctuary';
+type AppState = 'home' | 'mood' | 'map' | 'breathing' | 'sanctuary';
 
 const Index = () => {
-  const [currentState, setCurrentState] = useState<AppState>('hero');
+  const [currentState, setCurrentState] = useState<AppState>('home');
   const [userMood, setUserMood] = useState<any>(null);
 
   const handleStartQuest = () => {
-    setCurrentState('mood-checkin');
+    setCurrentState('mood');
   };
 
   const handleMoodSelected = (mood: any) => {
     setUserMood(mood);
     // Slight delay to let the mood checkin animation finish
     setTimeout(() => {
-      setCurrentState('adventure-map');
+      setCurrentState('map');
     }, 3500);
   };
 
   const handleQuestSelect = (quest: any) => {
     if (quest.type === 'breathing') {
-      setCurrentState('breathing-battle');
+      setCurrentState('breathing');
     } else if (quest.type === 'sanctuary') {
-      setCurrentState('bird-sanctuary');
+      setCurrentState('sanctuary');
     }
   };
 
   const handleBattleComplete = (success: boolean) => {
     // Return to adventure map after battle
     setTimeout(() => {
-      setCurrentState('adventure-map');
+      setCurrentState('map');
     }, 2000);
+  };
+
+  const handleNavigation = (section: string) => {
+    setCurrentState(section as AppState);
   };
 
   const renderCurrentState = () => {
     switch (currentState) {
-      case 'hero':
+      case 'home':
         return <HeroSection onStartQuest={handleStartQuest} />;
       
-      case 'mood-checkin':
+      case 'mood':
         return (
-          <div className="min-h-screen bg-gradient-calm flex items-center justify-center p-6">
+          <div className="min-h-screen bg-gradient-mystical flex items-center justify-center p-6 pt-24">
             <MoodCheckin onMoodSelected={handleMoodSelected} />
           </div>
         );
       
-      case 'adventure-map':
-        return <AdventureMap onSelectQuest={handleQuestSelect} />;
-      
-      case 'breathing-battle':
+      case 'map':
         return (
-          <div className="min-h-screen bg-gradient-mystical flex items-center justify-center p-6">
+          <div className="pt-16">
+            <AdventureMap onSelectQuest={handleQuestSelect} />
+          </div>
+        );
+      
+      case 'breathing':
+        return (
+          <div className="min-h-screen bg-gradient-hero flex items-center justify-center p-6 pt-24">
             <BreathingBattle onComplete={handleBattleComplete} />
           </div>
         );
       
-      case 'bird-sanctuary':
+      case 'sanctuary':
         return (
-          <div className="min-h-screen bg-gradient-healing flex items-center justify-center p-6">
+          <div className="min-h-screen bg-gradient-healing flex items-center justify-center p-6 pt-24">
             <BirdSanctuary onComplete={handleBattleComplete} />
           </div>
         );
@@ -76,71 +86,50 @@ const Index = () => {
 
   return (
     <div className="min-h-screen bg-background overflow-x-hidden">
-      {/* Navigation Header (only show after hero) */}
-      {currentState !== 'hero' && (
-        <header className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-sm border-b border-border/50">
-          <div className="container mx-auto px-6 py-4 flex justify-between items-center">
-            <h1 
-              className="text-2xl font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent cursor-pointer"
-              onClick={() => setCurrentState('hero')}
-            >
-              ZenQuest
-            </h1>
-            
-            <div className="flex gap-2">
-              <ZenButton
-                variant={currentState === 'adventure-map' ? 'zen' : 'ghost'}
-                size="sm"
-                onClick={() => setCurrentState('adventure-map')}
-              >
-                🗺️ Map
-              </ZenButton>
-              
-              <ZenButton
-                variant="ghost"
-                size="sm"
-                onClick={() => setCurrentState('mood-checkin')}
-              >
-                😊 Mood
-              </ZenButton>
-            </div>
-          </div>
-        </header>
-      )}
+      {/* Modern Navbar */}
+      <Navbar currentSection={currentState} onNavigate={handleNavigation} />
 
       {/* Main Content */}
-      <main className={currentState !== 'hero' ? 'pt-20' : ''}>
+      <main className={currentState !== 'home' ? 'pt-16' : ''}>
         {renderCurrentState()}
       </main>
 
-      {/* Floating Help Button */}
-      {currentState !== 'hero' && (
-        <div className="fixed bottom-6 right-6 z-40">
-          <ZenButton
-            variant="mystical"
-            size="floating"
-            className="text-xl shadow-mystical animate-float"
-            title="Need help or guidance?"
-          >
-            💫
-          </ZenButton>
-        </div>
-      )}
-
-      {/* Global Footer with User Stats (when not on hero) */}
-      {currentState !== 'hero' && userMood && (
-        <footer className="fixed bottom-6 left-6 z-40">
-          <Card className="bg-card/80 backdrop-blur-sm shadow-soft">
-            <CardContent className="p-3 flex items-center gap-3">
-              <div className="text-2xl">{userMood.emoji}</div>
-              <div className="text-sm">
-                <div className="font-medium">Current Mood</div>
-                <div className="text-muted-foreground">{userMood.label}</div>
+      {/* User Stats Floating Card */}
+      {currentState !== 'home' && userMood && (
+        <div className="fixed bottom-6 left-6 z-30">
+          <Card className="bg-card/90 backdrop-blur-md shadow-glass border border-primary/20">
+            <CardContent className="p-4 flex items-center gap-4">
+              <div className="text-3xl animate-float">{userMood.emoji}</div>
+              <div>
+                <div className="font-bold text-sm text-foreground">Current Mood</div>
+                <div className="text-muted-foreground text-xs">{userMood.label}</div>
+                <Badge className="mt-1 bg-gradient-to-r from-primary/20 to-secondary/20 text-primary border-primary/30 text-xs">
+                  Tracking Active
+                </Badge>
               </div>
             </CardContent>
           </Card>
-        </footer>
+        </div>
       )}
+
+      {/* Ambient Background Effects */}
+      <div className="fixed inset-0 pointer-events-none z-0">
+        {/* Floating orbs */}
+        {[...Array(6)].map((_, i) => (
+          <div
+            key={i}
+            className="absolute rounded-full bg-gradient-to-r from-primary/10 to-secondary/10 animate-float blur-xl"
+            style={{
+              width: `${Math.random() * 200 + 100}px`,
+              height: `${Math.random() * 200 + 100}px`,
+              top: `${Math.random() * 100}%`,
+              left: `${Math.random() * 100}%`,
+              animationDelay: `${Math.random() * 5}s`,
+              animationDuration: `${10 + Math.random() * 10}s`
+            }}
+          />
+        ))}
+      </div>
     </div>
   );
 };

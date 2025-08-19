@@ -6,81 +6,86 @@
 
 @layer base {
   :root {
-    /* Calming Background Palette */
-    --background: 210 25% 98%;
-    --foreground: 210 15% 20%;
+    /* Modern Cool Background Palette */
+    --background: 220 30% 6%;
+    --foreground: 210 40% 98%;
 
-    /* Card & Surface Colors */
-    --card: 200 30% 96%;
-    --card-foreground: 210 15% 25%;
+    /* Card & Surface Colors - Dark Glass */
+    --card: 220 25% 8%;
+    --card-foreground: 210 35% 95%;
 
-    --popover: 200 35% 98%;
-    --popover-foreground: 210 15% 20%;
+    --popover: 220 30% 7%;
+    --popover-foreground: 210 40% 98%;
 
-    /* Primary - Calming Ocean Blue */
-    --primary: 200 75% 55%;
-    --primary-foreground: 0 0% 100%;
-    --primary-glow: 200 85% 70%;
+    /* Primary - Electric Blue */
+    --primary: 210 100% 60%;
+    --primary-foreground: 220 30% 6%;
+    --primary-glow: 210 100% 70%;
 
-    /* Secondary - Forest Green */
-    --secondary: 150 45% 60%;
-    --secondary-foreground: 0 0% 100%;
-    --secondary-glow: 150 55% 75%;
+    /* Secondary - Cyber Purple */
+    --secondary: 270 85% 65%;
+    --secondary-foreground: 220 30% 6%;
+    --secondary-glow: 270 90% 75%;
 
-    /* Muted - Soft Neutrals */
-    --muted: 210 20% 94%;
-    --muted-foreground: 210 10% 45%;
+    /* Muted - Cool Grays */
+    --muted: 220 20% 12%;
+    --muted-foreground: 210 15% 65%;
 
-    /* Accent - Gentle Purple */
-    --accent: 270 40% 70%;
-    --accent-foreground: 0 0% 100%;
-    --accent-glow: 270 50% 85%;
+    /* Accent - Neon Green */
+    --accent: 150 100% 55%;
+    --accent-foreground: 220 30% 6%;
+    --accent-glow: 150 100% 65%;
 
-    /* Therapeutic Colors */
-    --healing: 120 60% 65%;
-    --healing-foreground: 0 0% 100%;
+    /* Therapeutic Colors - Modern Variants */
+    --healing: 160 80% 50%;
+    --healing-foreground: 220 30% 6%;
     
-    --stress: 0 65% 70%;
-    --stress-foreground: 0 0% 100%;
+    --stress: 0 85% 65%;
+    --stress-foreground: 220 30% 6%;
 
-    --calm: 180 45% 75%;
-    --calm-foreground: 210 15% 20%;
+    --calm: 200 70% 60%;
+    --calm-foreground: 220 30% 6%;
 
     /* Functional Colors */
-    --destructive: 0 70% 60%;
-    --destructive-foreground: 0 0% 100%;
+    --destructive: 0 85% 60%;
+    --destructive-foreground: 210 40% 98%;
 
-    --border: 210 25% 88%;
-    --input: 210 25% 92%;
-    --ring: 200 75% 55%;
+    --border: 220 25% 15%;
+    --input: 220 25% 10%;
+    --ring: 210 100% 60%;
 
-    --radius: 1rem;
+    --radius: 1.2rem;
 
-    /* Gradients */
-    --gradient-hero: linear-gradient(135deg, hsl(180 60% 80%), hsl(200 70% 75%), hsl(220 60% 85%));
-    --gradient-calm: linear-gradient(180deg, hsl(200 40% 95%), hsl(180 30% 92%));
-    --gradient-healing: linear-gradient(45deg, hsl(120 50% 85%), hsl(150 40% 80%));
-    --gradient-mystical: linear-gradient(270deg, hsl(270 40% 85%), hsl(300 35% 80%), hsl(200 45% 85%));
+    /* Modern Gradients */
+    --gradient-hero: linear-gradient(135deg, hsl(210 100% 20%), hsl(270 85% 25%), hsl(220 30% 8%));
+    --gradient-calm: linear-gradient(180deg, hsl(220 25% 8%), hsl(200 30% 10%));
+    --gradient-healing: linear-gradient(45deg, hsl(160 80% 15%), hsl(150 70% 12%));
+    --gradient-mystical: linear-gradient(270deg, hsl(270 85% 15%), hsl(210 100% 12%), hsl(220 30% 8%));
+    --gradient-glass: linear-gradient(135deg, rgba(255,255,255,0.1), rgba(255,255,255,0.05));
+    --gradient-navbar: linear-gradient(90deg, hsl(220 30% 6%), hsl(220 25% 8%), hsl(220 30% 6%));
 
-    /* Shadows & Effects */
-    --shadow-soft: 0 4px 20px hsl(200 30% 70% / 0.15);
-    --shadow-glow: 0 0 30px hsl(var(--primary-glow) / 0.3);
-    --shadow-healing: 0 0 25px hsl(var(--healing) / 0.25);
-    --shadow-mystical: 0 8px 40px hsl(270 40% 60% / 0.2);
+    /* Enhanced Shadows & Effects */
+    --shadow-soft: 0 4px 20px hsl(220 30% 0% / 0.3);
+    --shadow-glow: 0 0 40px hsl(var(--primary-glow) / 0.4);
+    --shadow-healing: 0 0 30px hsl(var(--healing) / 0.3);
+    --shadow-mystical: 0 12px 50px hsl(270 85% 20% / 0.4);
+    --shadow-glass: 0 8px 32px hsl(220 30% 0% / 0.4);
+    --shadow-neon: 0 0 20px hsl(var(--accent) / 0.5);
 
     /* Animations */
     --transition-smooth: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     --transition-bounce: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    --transition-glass: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     
-    /* Sidebar (keeping for consistency) */
-    --sidebar-background: 200 30% 96%;
-    --sidebar-foreground: 210 15% 25%;
-    --sidebar-primary: 200 75% 55%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 210 25% 92%;
-    --sidebar-accent-foreground: 210 15% 25%;
-    --sidebar-border: 210 25% 88%;
-    --sidebar-ring: 200 75% 55%;
+    /* Sidebar */
+    --sidebar-background: 220 25% 8%;
+    --sidebar-foreground: 210 35% 95%;
+    --sidebar-primary: 210 100% 60%;
+    --sidebar-primary-foreground: 220 30% 6%;
+    --sidebar-accent: 220 20% 12%;
+    --sidebar-accent-foreground: 210 35% 95%;
+    --sidebar-border: 220 25% 15%;
+    --sidebar-ring: 210 100% 60%;
   }
 
   .dark {

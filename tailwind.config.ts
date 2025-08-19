@@ -83,13 +83,17 @@ export default {
 				'gradient-hero': 'var(--gradient-hero)',
 				'gradient-calm': 'var(--gradient-calm)',
 				'gradient-healing': 'var(--gradient-healing)',
-				'gradient-mystical': 'var(--gradient-mystical)'
+				'gradient-mystical': 'var(--gradient-mystical)',
+				'gradient-glass': 'var(--gradient-glass)',
+				'gradient-navbar': 'var(--gradient-navbar)'
 			},
 			boxShadow: {
 				'soft': 'var(--shadow-soft)',
 				'glow': 'var(--shadow-glow)',
 				'healing': 'var(--shadow-healing)',
-				'mystical': 'var(--shadow-mystical)'
+				'mystical': 'var(--shadow-mystical)',
+				'glass': 'var(--shadow-glass)',
+				'neon': 'var(--shadow-neon)'
 			},
 			borderRadius: {
 				lg: 'var(--radius)',
@@ -142,6 +146,36 @@ export default {
 				'shimmer': {
 					'0%': { backgroundPosition: '-100% 0' },
 					'100%': { backgroundPosition: '100% 0' }
+				},
+				'pulse-glow': {
+					'0%, 100%': { 
+						boxShadow: '0 0 20px hsl(var(--primary) / 0.3)',
+						transform: 'scale(1)'
+					},
+					'50%': { 
+						boxShadow: '0 0 40px hsl(var(--primary) / 0.6)',
+						transform: 'scale(1.05)'
+					}
+				},
+				'slide-up': {
+					'0%': { 
+						opacity: '0', 
+						transform: 'translateY(30px)' 
+					},
+					'100%': { 
+						opacity: '1', 
+						transform: 'translateY(0)' 
+					}
+				},
+				'cyber-pulse': {
+					'0%, 100%': { 
+						boxShadow: '0 0 15px hsl(var(--accent) / 0.4)',
+						borderColor: 'hsl(var(--accent) / 0.3)'
+					},
+					'50%': { 
+						boxShadow: '0 0 30px hsl(var(--accent) / 0.8)',
+						borderColor: 'hsl(var(--accent) / 0.6)'
+					}
 				}
 			},
 			animation: {
@@ -153,7 +187,10 @@ export default {
 				'glow-pulse': 'glow-pulse 2s ease-in-out infinite',
 				'healing-pulse': 'healing-pulse 3s ease-in-out infinite',
 				'fade-in-up': 'fade-in-up 0.6s ease-out',
-				'shimmer': 'shimmer 2s linear infinite'
+				'shimmer': 'shimmer 2s linear infinite',
+				'pulse-glow': 'pulse-glow 3s ease-in-out infinite',
+				'slide-up': 'slide-up 0.6s ease-out',
+				'cyber-pulse': 'cyber-pulse 2s ease-in-out infinite'
 			}
 		}
 	},
