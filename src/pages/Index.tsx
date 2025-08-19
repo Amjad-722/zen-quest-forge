@@ -2,11 +2,12 @@ import React, { useState } from 'react';
 import { HeroSection } from '@/components/hero-section';
 import { AdventureMap } from '@/components/adventure-map';
 import { BreathingBattle } from '@/components/breathing-battle';
+import { BirdSanctuary } from '@/components/bird-sanctuary';
 import { MoodCheckin } from '@/components/mood-checkin';
 import { ZenButton } from '@/components/ui/zen-button';
 import { Card, CardContent } from '@/components/ui/card';
 
-type AppState = 'hero' | 'mood-checkin' | 'adventure-map' | 'breathing-battle';
+type AppState = 'hero' | 'mood-checkin' | 'adventure-map' | 'breathing-battle' | 'bird-sanctuary';
 
 const Index = () => {
   const [currentState, setCurrentState] = useState<AppState>('hero');
@@ -27,6 +28,8 @@ const Index = () => {
   const handleQuestSelect = (quest: any) => {
     if (quest.type === 'breathing') {
       setCurrentState('breathing-battle');
+    } else if (quest.type === 'sanctuary') {
+      setCurrentState('bird-sanctuary');
     }
   };
 
@@ -56,6 +59,13 @@ const Index = () => {
         return (
           <div className="min-h-screen bg-gradient-mystical flex items-center justify-center p-6">
             <BreathingBattle onComplete={handleBattleComplete} />
+          </div>
+        );
+      
+      case 'bird-sanctuary':
+        return (
+          <div className="min-h-screen bg-gradient-healing flex items-center justify-center p-6">
+            <BirdSanctuary onComplete={handleBattleComplete} />
           </div>
         );
       

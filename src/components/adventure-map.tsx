@@ -8,7 +8,7 @@ interface QuestNode {
   id: string;
   title: string;
   description: string;
-  type: 'breathing' | 'meditation' | 'mindfulness' | 'reflection';
+  type: 'breathing' | 'meditation' | 'mindfulness' | 'reflection' | 'sanctuary';
   difficulty: 'easy' | 'medium' | 'hard';
   completed: boolean;
   unlocked: boolean;
@@ -68,6 +68,17 @@ export const AdventureMap: React.FC<AdventureMapProps> = ({ onSelectQuest }) => 
       unlocked: false,
       position: { x: 30, y: 20 },
       reward: '🪞 Self-Awareness Badge'
+    },
+    {
+      id: '5',
+      title: 'Bird Sanctuary',
+      description: 'Gather peaceful thoughts by catching floating birds and butterflies.',
+      type: 'sanctuary',
+      difficulty: 'easy',
+      completed: false,
+      unlocked: true,
+      position: { x: 70, y: 70 },
+      reward: '🐦 Peace Keeper Badge'
     }
   ]);
 
@@ -81,6 +92,7 @@ export const AdventureMap: React.FC<AdventureMapProps> = ({ onSelectQuest }) => 
       case 'meditation': return '🧘‍♀️';
       case 'mindfulness': return '🌸';
       case 'reflection': return '🪞';
+      case 'sanctuary': return '🐦';
       default: return '✨';
     }
   };
