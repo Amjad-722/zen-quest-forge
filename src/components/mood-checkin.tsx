@@ -220,7 +220,6 @@ export const MoodCheckin: React.FC<MoodCheckinProps> = ({ onMoodSelected }) => {
 
         {/* Enhanced Mood Tracking Reminder */}
         <div className="bg-gradient-to-r from-accent/10 to-primary/10 rounded-2xl p-6 text-center border border-accent/20 shadow-lg backdrop-blur-sm">
-          <div className="text-3xl mb-3 drop-shadow-sm">📊</div>
           <p className="text-sm text-muted-foreground font-medium leading-relaxed">
             Daily mood tracking helps you understand patterns and progress over
             time
