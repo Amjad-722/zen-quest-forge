@@ -86,7 +86,7 @@ export const BreathingBattle: React.FC<BreathingBattleProps> = ({ onComplete }) 
         <CardTitle className="text-4xl font-black mt-6 mb-4 bg-gradient-to-r from-stress via-primary to-secondary bg-clip-text text-transparent">
           Breathing Battle
         </CardTitle>
-        <p className="text-muted-foreground text-lg font-medium">
+        <p className="text-muted-foreground text-lg font-medium text-white">
           {phaseInstructions[phase]}
         </p>
       </CardHeader>

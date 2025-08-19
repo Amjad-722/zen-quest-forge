@@ -198,7 +198,7 @@ export const BirdSanctuary: React.FC<BirdSanctuaryProps> = ({ onComplete }) => {
   };
 
   return (
-    <Card className="w-full max-w-5xl mx-auto bg-gradient-to-br from-white via-healing/5 to-calm/10 border-0 shadow-2xl backdrop-blur-sm overflow-hidden">
+    <Card className="w-full max-w-5xl mx-auto shadow-2xl hover:shadow-healing/30 transform hover:scale-105 transition-all duration-300backdrop-blur-sm overflow-hidden">
       <CardHeader className="text-center pb-6 relative">
         {/* Decorative header */}
         <div className="absolute top-0 left-0 right-0 h-2 bg-gradient-to-r from-healing via-calm to-secondary" />
@@ -208,7 +208,7 @@ export const BirdSanctuary: React.FC<BirdSanctuaryProps> = ({ onComplete }) => {
         <CardTitle className="text-4xl font-black mt-6 mb-4 bg-gradient-to-r from-healing via-calm to-secondary bg-clip-text text-transparent">
           Bird Sanctuary
         </CardTitle>
-        <p className="text-muted-foreground text-lg font-medium">
+        <p className="text-muted-foreground text-lg font-medium text-white">
           {phaseInstructions[phase]}
         </p>
       </CardHeader>
@@ -225,7 +225,7 @@ export const BirdSanctuary: React.FC<BirdSanctuaryProps> = ({ onComplete }) => {
               value={(caughtCount / TARGET_BIRDS) * 100} 
               className="h-4 bg-muted/30 shadow-inner"
             />
-            <div className="mt-2 text-sm text-muted-foreground text-center">
+            <div className="mt-2 text-sm text-muted-foreground text-center text-white">
               {caughtCount === 0 ? "🌱 Start collecting" : 
                caughtCount < TARGET_BIRDS / 2 ? "🌿 Keep going" : 
                caughtCount < TARGET_BIRDS ? "🌸 Almost there!" : "✨ Sanctuary complete!"}
